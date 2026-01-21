@@ -1,0 +1,10 @@
+name: frambit
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: frambit
+    ports:
+      - 5431:5432
