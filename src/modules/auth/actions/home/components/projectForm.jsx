@@ -11,6 +11,7 @@ import z from "zod";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Form, FormField } from "@/components/ui/form";
+import { onInvoke } from "../actions";
 
 const formSchema = z.object({
   conten: z
@@ -93,8 +94,19 @@ const ProjectForm = () => {
     }
   };
 
+  const onInvokeAi = async () => {
+    try {
+      const res = await onInvoke();
+      console.log(res);
+      toast.success("Invoked AI successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="space-y-10">
+      <Button onClick={onInvokeAi}>Invoke Agent</Button>
       {/* Project Templates Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {PROJECT_TEMPLATES.map((template, index) => (
